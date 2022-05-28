@@ -1,7 +1,7 @@
 <template>
   <aside :class="[is_expanded ? 'is-expanded' : '']">
     <div class="logo">
-      <img src="/pngfind.com-google-forms-png-5309946.png" alt="Vue Logo" />
+      <img src="/K-logo.png" alt="K Logo" />
     </div>
     <div class="menu-toggle-wrap">
       <button class="menu-toggle" @click="ToggleMenu">
@@ -44,7 +44,7 @@ aside {
   display: flex;
   flex-direction: column;
   width: calc(2rem + 2rem);
-  min-height: 100vh;
+  height: 200000px;
   overflow: hidden;
   padding: 1rem;
 
@@ -58,7 +58,8 @@ aside {
   .logo {
     margin-bottom: 1rem;
     img {
-      width: 2rem;
+      width: 3rem;
+      margin-left: -11px;
     }
   }
 

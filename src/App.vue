@@ -6,7 +6,7 @@ import Sidebar from "./components/Sidebar.vue";
 <template>
   <div class="app">
     <Sidebar />
-    <router-view />
+    <router-view class="bg-light" />
   </div>
 </template>
 
@@ -24,7 +24,7 @@ import Sidebar from "./components/Sidebar.vue";
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Fira sans", sans-serif;
+  font-family: "Press Start 2P", cursive;
   border-image-repeat: unset !important;
 }
 body {
@@ -44,10 +44,10 @@ button {
 
     @media (max-width: 768px) {
       z-index: -1;
-      padding: 0rem;
-      padding-left: 4rem;
+      padding: 1rem;
+      padding-left: 5rem;
 
-      .nes-container.is-rounded {
+      .container {
         padding: 1rem;
       }
     }
