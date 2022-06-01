@@ -6,7 +6,7 @@ import Sidebar from "./components/Sidebar.vue";
 <template>
   <div class="app">
     <Sidebar />
-    <router-view class="bg-light" />
+    <router-view style="background-color: #f5f5f5" />
   </div>
 </template>
 

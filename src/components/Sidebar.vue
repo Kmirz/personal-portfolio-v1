@@ -12,20 +12,43 @@
     <h3>Menu</h3>
     <div class="menu">
       <router-link class="button" to="/">
-        <span class="material-icons material-icons-round"> home </span>
+        <span class="material-icons material-icons-round"> star </span>
         <span class="text">Home</span>
       </router-link>
       <router-link class="button" to="/about">
-        <span class="material-icons material-icons-round"> help_outline </span>
+        <span class="material-icons material-icons-round"> account_box </span>
         <span class="text">About</span>
       </router-link>
     </div>
-    <!-- <div class="settings"></div> -->
+    <!-- <div class="projects"></div> -->
     <div class="menu">
-      <router-link class="button" to="/settings">
-        <span class="material-icons material-icons-round"> settings </span>
-        <span class="text">Settings</span>
+      <router-link class="button" to="/projects">
+        <span class="material-icons material-icons-round"> work </span>
+        <span class="text">Projects</span>
       </router-link>
+    </div>
+    <div class="menu">
+      <a class="button" href="https://github.com/Kmirz/" target="_blank">
+        <span class="material-icons material-icons-round"> description </span>
+        <span class="text">Resumé</span>
+      </a>
+    </div>
+    <div class="menu">
+      <a
+        class="button"
+        href="https://www.linkedin.com/in/kashmirza/"
+        target="_blank"
+      >
+        <i class="fa-brands fa-linkedin icons"></i>
+        <span class="text">LinkedIn</span>
+      </a>
+    </div>
+
+    <div class="menu">
+      <a class="button" href="https://github.com/Kmirz/" target="_blank">
+        <i class="fa-brands fa-github-square icons"></i>
+        <span class="text">GitHub</span>
+      </a>
     </div>
   </aside>
 </template>
@@ -75,14 +98,16 @@ aside {
     .menu-toggle {
       margin-left: -100px;
       transition: 0.2s ease-out;
-      .material-icons-round {
+      .material-icons-round,
+      .icons {
         font-size: 2rem;
         color: var(--light);
       }
     }
 
     .menu-toggle:hover {
-      .material-icons-round {
+      .material-icons-round,
+      .icons {
         transform: scale(1.2);
         color: var(--primary);
       }
@@ -107,7 +132,8 @@ h3,
     text-decoration: none;
     transition: 0.2s ease-in-out;
     padding: 0.5rem 1rem;
-    .material-icons {
+    .material-icons,
+    .icons {
       font-size: 2rem;
       color: var(--light);
       transition: 0.2s ease-in-out;
@@ -119,6 +145,7 @@ h3,
     &:hover {
       background-color: var(--dark-alt);
       .material-icons,
+      .icons,
       .text {
         color: var(--primary);
       }
@@ -127,6 +154,7 @@ h3,
       background-color: var(--dark-alt);
       border-right: 5px solid var(--primary);
       .material-icons,
+      .icons,
       .text {
         color: var(--primary);
       }
@@ -157,7 +185,8 @@ h3 {
   }
 
   .button {
-    .material-icons {
+    .material-icons,
+    .icons {
       margin-right: 1rem;
     }
   }
