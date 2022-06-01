@@ -31,24 +31,24 @@
     </div> -->
 
     <div class="intro-block">
-      <button class="nes-btn m-2 is-error start-adventure" v-motion-pop>
+      <!-- <button class="nes-btn m-2 is-error start-adventure" v-motion-pop>
         START ADVENTURE!
+      </button> -->
+    </div>
+    <div class="nes-container is-rounded is-dark textbox" v-motion-pop>
+      <p>
+        Hi there! <br />
+        I'm Kash, <span class="role-title"> {{ roleName }} </span>
+      </p>
+    </div>
+    <div class="bottom-text-wrapper">
+      <button class="nes-btn m-2 is-primary" v-motion-slide-left>Resume</button>
+      <button class="nes-btn m-2 is-success" v-motion-slide-left>
+        Projects
       </button>
-
-      <div class="bottom-text-wrapper">
-        <div class="nes-container is-rounded is-dark textbox" v-motion-pop>
-          <p>
-            Hi there! <br />
-            I'm Kash, <span class="role-title"> {{ roleName }} </span>
-          </p>
-        </div>
-        <button class="nes-btn m-2 is-primary" v-motion-slide-left>
-          Resume
-        </button>
-        <button class="nes-btn m-2 is-success" v-motion-slide-left>
-          Projects
-        </button>
-      </div>
+      <button class="nes-btn m-2 is-primary" v-motion-slide-left>
+        About Me
+      </button>
     </div>
   </main>
 </template>
@@ -122,5 +122,10 @@ export default {
 .textbox {
   width: 100%;
   font-size: 25px;
+}
+
+.bottom-text-wrapper {
+  position: absolute;
+  bottom: 10px;
 }
 </style>

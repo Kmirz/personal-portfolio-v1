@@ -12,7 +12,7 @@
     <h3>Menu</h3>
     <div class="menu">
       <router-link class="button" to="/">
-        <span class="material-icons material-icons-round"> star </span>
+        <span class="material-icons material-icons-round"> home </span>
         <span class="text">Home</span>
       </router-link>
       <router-link class="button" to="/about">
@@ -28,7 +28,7 @@
       </router-link>
     </div>
     <div class="menu">
-      <a class="button" href="https://github.com/Kmirz/" target="_blank">
+      <a class="button" href="/Kash Mirza Resume 2022 V1.0.pdf" target="_blank">
         <span class="material-icons material-icons-round"> description </span>
         <span class="text">Resumé</span>
       </a>
