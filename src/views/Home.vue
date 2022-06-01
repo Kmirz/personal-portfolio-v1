@@ -30,18 +30,21 @@
       </button>
     </div> -->
 
-    <div class="intro-block">
-      <!-- <button class="nes-btn m-2 is-error start-adventure" v-motion-pop>
+    <!-- <div class="intro-block">
+      <button class="nes-btn m-2 is-error start-adventure" v-motion-pop>
         START ADVENTURE!
-      </button> -->
-    </div>
+      </button>
+    </div> -->
     <div class="nes-container is-rounded is-dark textbox" v-motion-pop>
       <p>
         Hi there! <br />
         I'm Kash, <span class="role-title"> {{ roleName }} </span>
       </p>
     </div>
-    <div class="bottom-text-wrapper">
+    <!-- <div
+      class="bottom-text-wrapper"
+      style="display: flex; flex-direction: row; justify-content: center"
+    >
       <button class="nes-btn m-2 is-primary" v-motion-slide-left>Resume</button>
       <button class="nes-btn m-2 is-success" v-motion-slide-left>
         Projects
@@ -49,7 +52,7 @@
       <button class="nes-btn m-2 is-primary" v-motion-slide-left>
         About Me
       </button>
-    </div>
+    </div> -->
   </main>
 </template>
 

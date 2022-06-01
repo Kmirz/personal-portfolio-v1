@@ -15,18 +15,18 @@
         <span class="material-icons material-icons-round"> home </span>
         <span class="text">Home</span>
       </router-link>
-      <router-link class="button" to="/about">
+      <!-- <router-link class="button" to="/about">
         <span class="material-icons material-icons-round"> account_box </span>
         <span class="text">About</span>
-      </router-link>
+      </router-link> -->
     </div>
     <!-- <div class="projects"></div> -->
-    <div class="menu">
+    <!-- <div class="menu">
       <router-link class="button" to="/projects">
         <span class="material-icons material-icons-round"> work </span>
         <span class="text">Projects</span>
       </router-link>
-    </div>
+    </div> -->
     <div class="menu">
       <a class="button" href="/Kash Mirza Resume 2022 V1.0.pdf" target="_blank">
         <span class="material-icons material-icons-round"> description </span>
