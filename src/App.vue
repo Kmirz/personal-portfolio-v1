@@ -12,7 +12,7 @@ import Sidebar from "./components/Sidebar.vue";
 
 <style lang="scss">
 :root {
-  --primary: #9933ff;
+  --primary: #33ccff;
   --primary-alt: #22c55e;
   --grey: #64748b;
   --dark: #1b1f3b;
@@ -27,6 +27,11 @@ import Sidebar from "./components/Sidebar.vue";
   font-family: "Press Start 2P", cursive;
   border-image-repeat: unset !important;
 }
+
+.alt-text {
+  font-family: "Fira sans", sans-serif;
+}
+
 body {
   background: var(--light);
 }

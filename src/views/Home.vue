@@ -62,7 +62,16 @@ export default {
   setup() {
     // Setup role rotation for intro page
 
-    const roleList = ["a developer.", "an engineer.", "a writer."];
+    const roleList = [
+      "a developer.",
+      "an engineer.",
+      "a writer.",
+      "a gamer.",
+      "a builder.",
+      "a streamer.",
+      "a poet.",
+      "a tinkerer.",
+    ];
 
     let roleNumber = 0;
 
@@ -85,7 +94,7 @@ export default {
             roleName.value = roleName.value + item;
             // console.log(roleName.value);
             resolve();
-          }, 150);
+          }, 25);
         });
       }
 
