@@ -112,7 +112,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .intro-block {
   display: flex;
   flex-direction: column;
@@ -134,6 +134,10 @@ export default {
 .textbox {
   width: 100%;
   font-size: 25px;
+
+  @media (max-width: 769px) {
+    min-height: 160px;
+  }
 }
 
 .bottom-text-wrapper {

@@ -12,7 +12,8 @@
           mx-auto
           col-md-5 col-xl-3
         "
-        style="max-width: 350px"
+        style="width: 350px"
+        v-motion-slide-left
       >
         <p class="title" style="background: #f5f5f5; margin-top: -30px">
           It's me!
@@ -24,7 +25,7 @@
         />
       </div>
 
-      <div class="top-wrapper col-md-6 col-xl-8 m-auto">
+      <div class="top-wrapper col-md-6 col-xl-8 m-auto" v-motion-slide-right>
         <div class="nes-container with-title is-centered is-rounded my-3">
           <p class="title" style="background: #f5f5f5; margin-top: -30px">
             Introduction
@@ -41,6 +42,7 @@
           role="button"
           @click="setFact(factNumber)"
           class="nes-container is-rounded is-dark"
+          style="min-height: 100px"
         >
           <p>{{ message }} {{ endPoint }} &nbsp;</p>
         </div>
