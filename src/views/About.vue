@@ -37,25 +37,75 @@
           </p>
         </div>
 
-        <div class="nes-container is-rounded is-dark">
-          <p>Good morning. Thou hast had a good night's sleep, I hope.</p>
+        <div
+          role="button"
+          @click="setFact(factNumber)"
+          class="nes-container is-rounded is-dark"
+        >
+          <p>{{ message }} {{ endPoint }} &nbsp;</p>
         </div>
-      </div>
-      <div class="nes-container with-title is-centered is-rounded mt-5">
-        <p class="title" style="background: #f5f5f5; margin-top: -30px">
-          Introduction
-        </p>
-        <p class="alt-text">
-          Welcome! I’m a development lead, process engineer, and certified scrum
-          master (CSM) - currently applying my development, process improvement,
-          and digitization skillset to improve client and employee experience.
-        </p>
       </div>
     </div>
   </main>
 </template>
 
 <script>
+import { ref } from "vue";
+export default {
+  setup() {
+    const message = ref("Click here for some cool facts about Kash!");
+
+    const endPoint = ref("\u25BC");
+
+    let showEndPoint = false;
+
+    const factList = [
+      "He loves you very much",
+      "He also meows randomly",
+      "He is a super cool vtuber",
+    ];
+
+    const factNumber = ref(0);
+
+    const messageEnd = setInterval(() => {
+      showEndPoint = !showEndPoint;
+
+      if (showEndPoint) {
+        endPoint.value = "\u25BC";
+      } else {
+        endPoint.value = "";
+        console.log(showEndPoint);
+      }
+    }, 1000);
+
+    async function setFact() {
+      // console.log("running function");
+
+      message.value = "";
+
+      let stringArray = Array.from(factList[factNumber.value]);
+
+      // console.log(stringArray);
+
+      for (let item of stringArray) {
+        await new Promise((resolve) => {
+          setTimeout(() => {
+            message.value = message.value + item;
+            resolve();
+          }, 25);
+        });
+      }
+
+      if (factNumber.value === factList.length - 1) {
+        factNumber.value = 0;
+      } else {
+        factNumber.value++;
+      }
+    }
+
+    return { message, endPoint, factNumber, setFact };
+  },
+};
 </script>
 
 <style scoped>

@@ -96,13 +96,13 @@
             </p>
             <div class="row mx-auto d-flex justify-content-between">
               <a
-                href="https://dnd-random-gen-vue-express.herokuapp.com/"
+                href="https://responsive-sidebar.herokuapp.com/"
                 class="btn btn-primary my-2"
                 target="_blank"
                 >Live Demo</a
               >
               <a
-                href="https://github.com/Kmirz/DnD-Character-Generator-VueJS"
+                href="https://github.com/Kmirz/Responsive-Sidebar-VueJS"
                 class="btn btn-success my-2"
                 target="_blank"
                 >Github Repo</a
