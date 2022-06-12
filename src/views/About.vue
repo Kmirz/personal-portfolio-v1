@@ -78,7 +78,7 @@ export default {
         endPoint.value = "";
         console.log(showEndPoint);
       }
-    }, 1000);
+    }, 700);
 
     async function setFact() {
       // console.log("running function");
