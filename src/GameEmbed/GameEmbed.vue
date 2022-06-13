@@ -10,10 +10,16 @@ import collisions from "./data/collisions";
 import { Sprite, Boundary } from "./data/classes";
 import { rectangularCollision, checkForCharacterCollision } from "./data/utils";
 
+import { useContext } from "../stores/gameState";
+import { storeToRefs } from "pinia";
+
 export default {
   name: "GameEmbed",
   setup() {
     const canvasBlock = ref(null);
+
+    const gameState = useContext();
+    const { runEnabled } = storeToRefs(gameState);
 
     const audio = {
       Map: new Howl({
@@ -43,7 +49,7 @@ export default {
 
       const c = canvas.getContext("2d");
 
-      canvas.width = 1024;
+      canvas.width = 1024 + 500;
       canvas.height = 576;
       console.log(canvas);
 
@@ -62,8 +68,8 @@ export default {
 
       const boundaries = [];
       const offset = {
-        x: -735,
-        y: -650,
+        x: -735 + 250,
+        y: -720,
       };
 
       collisionsMap.forEach((row, i) => {
@@ -346,35 +352,38 @@ export default {
       animate();
 
       let lastKey = [];
+
       window.addEventListener("keydown", (e) => {
-        switch (e.key) {
-          case "w":
-            keys.w.pressed = true;
-            if (!lastKey.includes("w")) {
-              lastKey.unshift("w");
-            }
+        if (runEnabled.value) {
+          switch (e.key) {
+            case "w":
+              keys.w.pressed = true;
+              if (!lastKey.includes("w")) {
+                lastKey.unshift("w");
+              }
 
-            break;
-          case "a":
-            keys.a.pressed = true;
-            if (!lastKey.includes("a")) {
-              lastKey.unshift("a");
-            }
-            break;
+              break;
+            case "a":
+              keys.a.pressed = true;
+              if (!lastKey.includes("a")) {
+                lastKey.unshift("a");
+              }
+              break;
 
-          case "s":
-            keys.s.pressed = true;
-            if (!lastKey.includes("s")) {
-              lastKey.unshift("s");
-            }
-            break;
+            case "s":
+              keys.s.pressed = true;
+              if (!lastKey.includes("s")) {
+                lastKey.unshift("s");
+              }
+              break;
 
-          case "d":
-            keys.d.pressed = true;
-            if (!lastKey.includes("d")) {
-              lastKey.unshift("d");
-            }
-            break;
+            case "d":
+              keys.d.pressed = true;
+              if (!lastKey.includes("d")) {
+                lastKey.unshift("d");
+              }
+              break;
+          }
         }
       });
 

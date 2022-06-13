@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, onBeforeUnmount } from "vue";
 export default {
   setup() {
     const message = ref("Click here for some cool facts about Kash!");
@@ -76,9 +76,11 @@ export default {
         endPoint.value = "\u25BC";
       } else {
         endPoint.value = "";
-        console.log(showEndPoint);
+        // console.log(showEndPoint);
       }
     }, 700);
+
+    onBeforeUnmount(() => clearTimeout(messageEnd));
 
     async function setFact() {
       // console.log("running function");

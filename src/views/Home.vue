@@ -18,12 +18,13 @@
     </div>
 
     <div v-if="!showGame" class="adventure-start">
-      <p class="text-center">Pick a colour!</p>
+      <p class="text-center" style="color: white">Pick a colour!</p>
 
       <div class="topLayer d-flex justify-content-between">
         <button
-          @click="test"
+          @click="changeColour('blue')"
           class="nes-btn is-primary my-2 mx-auto"
+          :class="{ 'opacity-75': selectedButton !== 'blue' }"
           style="width: 29%"
           v-motion-pop
         >
@@ -31,9 +32,9 @@
         </button>
 
         <button
-          @click="test"
-          v-if="!showGame"
+          @click="changeColour('green')"
           class="nes-btn is-success my-2 mx-auto"
+          :class="{ 'opacity-75': selectedButton !== 'green' }"
           style="width: 29%"
           v-motion-pop
         >
@@ -41,9 +42,9 @@
         </button>
 
         <button
-          @click="test"
-          v-if="!showGame"
+          @click="changeColour('yellow')"
           class="nes-btn is-warning my-2 mx-auto"
+          :class="{ 'opacity-75': selectedButton !== 'yellow' }"
           style="width: 29%; color: white"
           v-motion-pop
         >
@@ -51,8 +52,7 @@
         </button>
       </div>
       <button
-        @click="showGame = true"
-        v-if="!showGame"
+        @click="startAdventure"
         class="nes-btn is-error mx-auto"
         style="width: 100%"
         v-motion-pop
@@ -79,6 +79,10 @@
 <script>
 import { ref } from "vue";
 import GameEmbed from "../GameEmbed/GameEmbed.vue";
+
+import { useContext } from "../stores/gameState";
+import { storeToRefs } from "pinia";
+
 export default {
   components: { GameEmbed },
   setup() {
@@ -133,7 +137,54 @@ export default {
 
     const showGame = ref(false);
 
-    return { roleName, showGame };
+    //Changing colours on opening selection
+
+    const gameState = useContext();
+    const { selectedButton, runEnabled } = storeToRefs(gameState);
+
+    function changeColour(colour) {
+      selectedButton.value = colour;
+
+      switch (colour) {
+        case "yellow":
+          document.documentElement.style.setProperty("--primary", "#fff600");
+          document.documentElement.style.setProperty("--dark", "#5e00cf");
+          document.documentElement.style.setProperty("--dark-alt", "#2f6bbe");
+
+          break;
+
+        case "green":
+          document.documentElement.style.setProperty("--primary", "#4ade80");
+          document.documentElement.style.setProperty("--dark", "#1e293b");
+          document.documentElement.style.setProperty("--dark-alt", "#334155");
+
+          break;
+
+        case "blue":
+          document.documentElement.style.setProperty("--primary", "#33ccff");
+          document.documentElement.style.setProperty("--dark", "#1b1f3b");
+          document.documentElement.style.setProperty("--dark-alt", "#334155");
+
+          break;
+
+        default:
+          throw new Error("Invalid Color Selected");
+      }
+    }
+
+    function startAdventure() {
+      runEnabled.value = true;
+      showGame.value = true;
+    }
+
+    return {
+      roleName,
+      showGame,
+      changeColour,
+      runEnabled,
+      selectedButton,
+      startAdventure,
+    };
   },
 };
 </script>
@@ -142,8 +193,18 @@ export default {
 .adventure-start {
   position: absolute;
   bottom: 10px;
-  width: calc(100vw - 4em - 6vw);
+  width: calc(100vw - 80px - 6vw);
   z-index: 1;
+
+  @media (max-width: 769px) {
+    font-size: 9px;
+    min-height: 120px;
+  }
+
+  @media (min-width: 769px) {
+    min-height: 160px;
+    font-size: 20px;
+  }
 }
 
 .intro-block {
@@ -153,7 +214,7 @@ export default {
 }
 
 .role-title {
-  color: #33ccff;
+  color: var(--primary);
 }
 
 .home-page {
@@ -162,11 +223,18 @@ export default {
 }
 
 .textbox {
-  width: calc(100vw - 3em - 5vw);
-  font-size: 25px;
-
   @media (max-width: 769px) {
+    width: calc(100vw - 80px - 5vw);
+
+    font-size: 17px;
+    min-height: 120px;
+  }
+
+  @media (min-width: 769px) {
+    width: calc(100vw - 80px - 5vw);
+
     min-height: 160px;
+    font-size: 25px;
   }
 }
 
