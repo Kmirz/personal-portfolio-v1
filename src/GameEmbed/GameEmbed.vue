@@ -196,7 +196,6 @@ export default {
         image: foregroundImage,
       });
 
-      const movables = [background, ...boundaries, foreground, ...characters];
       const renderables = [
         background,
         ...boundaries,
@@ -205,7 +204,15 @@ export default {
         foreground,
       ];
 
+      let movables = [background, ...boundaries, foreground, ...characters];
+
       function animate() {
+        if (runEnabled.value) {
+          movables = [background, ...boundaries, foreground, ...characters];
+        } else {
+          movables = [...characters];
+        }
+
         const animationId = window.requestAnimationFrame(animate);
         renderables.forEach((renderable) => {
           renderable.draw(c);
@@ -280,7 +287,10 @@ export default {
             movables.forEach((movable) => {
               movable.position.x += 3;
             });
-        } else if (keys.s.pressed && lastKey.length > 0 && lastKey[0] === "s") {
+        } else if (
+          (keys.s.pressed && lastKey.length > 0 && lastKey[0] === "s") ||
+          runEnabled.value === false
+        ) {
           player.animate = true;
           player.image = player.sprites.down;
 
@@ -406,6 +416,51 @@ export default {
             lastKey = lastKey.filter((key) => key !== "d");
             break;
         }
+      });
+
+      let swipeCheck = false;
+
+      // create a simple instance
+      // by default, it only adds horizontal recognizers
+      const mc = new Hammer(canvasBlock.value);
+
+      // let the pan gesture support all directions.
+      // this will block the vertical scrolling on a touch-device while on the element
+      mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
+
+      // listen to events...
+      mc.on("panleft panright panup pandown tap press", function (ev) {
+        console.log(ev.type + " gesture detected.");
+
+        if (runEnabled.value) {
+          switch (ev.type) {
+            case "panup":
+              keys.w.pressed = true;
+              lastKey = ["w"];
+
+              break;
+            case "panleft":
+              keys.a.pressed = true;
+              lastKey = ["a"];
+              break;
+
+            case "pandown":
+              keys.s.pressed = true;
+              lastKey = ["s"];
+              break;
+
+            case "panright":
+              keys.d.pressed = true;
+              lastKey = ["d"];
+              break;
+          }
+        }
+      });
+
+      mc.on("panend", function (ev) {
+        console.log(ev.type + " gesture detected.");
+
+        lastKey = [];
       });
     });
 
