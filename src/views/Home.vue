@@ -60,6 +60,12 @@
         START ADVENTURE!
       </button>
     </div>
+
+    <div v-if="showGame" class="adventure-start">
+      <p class="text-center" style="color: white">
+        Use A,W,S,D or swipe to move around and explore!
+      </p>
+    </div>
   </main>
 </template>
 
@@ -135,22 +141,23 @@ export default {
       switch (colour) {
         case "yellow":
           document.documentElement.style.setProperty("--primary", "#fff600");
-          document.documentElement.style.setProperty("--dark", "#5e00cf");
-          document.documentElement.style.setProperty("--dark-alt", "#2f6bbe");
+
+          document.documentElement.style.setProperty("--dark", "#f4c127");
+          document.documentElement.style.setProperty("--dark-alt", "#d87d0f");
 
           break;
 
         case "green":
           document.documentElement.style.setProperty("--primary", "#4ade80");
-          document.documentElement.style.setProperty("--dark", "#1e293b");
+          document.documentElement.style.setProperty("--dark", "#2e6c2f");
           document.documentElement.style.setProperty("--dark-alt", "#334155");
 
           break;
 
         case "blue":
           document.documentElement.style.setProperty("--primary", "#33ccff");
-          document.documentElement.style.setProperty("--dark", "#1b1f3b");
-          document.documentElement.style.setProperty("--dark-alt", "#334155");
+          document.documentElement.style.setProperty("--dark", "#4d9ba6");
+          document.documentElement.style.setProperty("--dark-alt", "#2f6bbe");
 
           break;
 

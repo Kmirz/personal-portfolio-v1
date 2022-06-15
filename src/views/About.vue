@@ -50,12 +50,22 @@
           class="bottom-text-wrapper"
           style="display: flex; flex-direction: row; justify-content: center"
         >
-          <button class="nes-btn m-2 is-primary" v-motion-slide-left>
+          <a
+            class="nes-btn m-2 is-primary"
+            style="color: white"
+            href="/Kash Mirza Resume 2022 V1.1.pdf"
+            v-motion-slide-left
+          >
             Resume
-          </button>
-          <button class="nes-btn m-2 is-success" v-motion-slide-left>
+          </a>
+          <a
+            class="nes-btn m-2 is-success"
+            style="color: white"
+            href="/projects"
+            v-motion-slide-left
+          >
             Projects
-          </button>
+          </a>
         </div>
       </div>
     </div>
