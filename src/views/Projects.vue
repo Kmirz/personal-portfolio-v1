@@ -92,7 +92,7 @@
             <h5 class="card-title my-3 text-center">Task Tracker</h5>
 
             <p class="card-text alt-text">
-              Task tracker allowing for marking of differnt tasks and their
+              Task tracker allowing for marking of different tasks and their
               completion.
             </p>
 
