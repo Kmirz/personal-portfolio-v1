@@ -46,6 +46,17 @@
         >
           <p>{{ message }} {{ endPoint }} &nbsp;</p>
         </div>
+        <div
+          class="bottom-text-wrapper"
+          style="display: flex; flex-direction: row; justify-content: center"
+        >
+          <button class="nes-btn m-2 is-primary" v-motion-slide-left>
+            Resume
+          </button>
+          <button class="nes-btn m-2 is-success" v-motion-slide-left>
+            Projects
+          </button>
+        </div>
       </div>
     </div>
   </main>
@@ -62,9 +73,9 @@ export default {
     let showEndPoint = false;
 
     const factList = [
-      "He loves you very much",
-      "He also meows randomly",
-      "He is a super cool vtuber",
+      "I used to be a twitch streamer!",
+      "I worked in the oil sands and once rode in a truck that was 2 stories tall!",
+      "I love playing a game called 'Archery Tag', which is like archery dodgeball!",
     ];
 
     const factNumber = ref(0);

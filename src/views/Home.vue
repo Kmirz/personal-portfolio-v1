@@ -60,19 +60,6 @@
         START ADVENTURE!
       </button>
     </div>
-
-    <!-- <div
-      class="bottom-text-wrapper"
-      style="display: flex; flex-direction: row; justify-content: center"
-    >
-      <button class="nes-btn m-2 is-primary" v-motion-slide-left>Resume</button>
-      <button class="nes-btn m-2 is-success" v-motion-slide-left>
-        Projects
-      </button>
-      <button class="nes-btn m-2 is-primary" v-motion-slide-left>
-        About Me
-      </button>
-    </div> -->
   </main>
 </template>
 
