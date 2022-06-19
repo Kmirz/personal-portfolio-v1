@@ -4,6 +4,7 @@
     style="display: flex; flex-direction: column; justify-content: center"
   >
     <div
+      v-show="showFirstMessage"
       class="nes-container is-rounded is-dark textbox bottom-text-wrapper"
       v-motion-pop
     >
@@ -11,6 +12,14 @@
         Hi there! <br />
         I'm Kash, <span class="role-title"> {{ roleName }} </span>
       </p>
+    </div>
+
+    <div
+      v-show="showMessage"
+      class="nes-container is-rounded is-dark textbox bottom-text-wrapper"
+      v-motion-pop
+    >
+      <p>{{ messageContent }}</p>
     </div>
 
     <div class="intro-block">
@@ -60,11 +69,33 @@
         START ADVENTURE!
       </button>
     </div>
-
-    <div v-if="showGame" class="adventure-start">
-      <p class="text-center" style="color: white">
+    <div v-if="showGame" draggable="false" class="adventure-start unselectable">
+      <p class="text-center my-0" style="color: white">
         Use A,W,S,D or swipe to move around and explore!
       </p>
+      <img
+        draggable="false"
+        class="unselectable"
+        :src="controllerDirection"
+        alt=""
+      />
+      <button
+        v-show="interact"
+        @click="InteractNPC"
+        class="nes-btn is-error mx-auto"
+        style="
+          width: 50%;
+          color: white;
+          pointer-events: auto;
+          font-size: 15px;
+          position: absolute;
+          bottom: 50px;
+          right: 10px;
+        "
+        v-motion-pop
+      >
+        Interact
+      </button>
     </div>
   </main>
 </template>
@@ -129,11 +160,19 @@ export default {
     //setup game show flag
 
     const showGame = ref(false);
+    const showFirstMessage = ref(true);
 
     //Changing colours on opening selection
 
     const gameState = useContext();
-    const { selectedButton, runEnabled } = storeToRefs(gameState);
+    const {
+      selectedButton,
+      runEnabled,
+      interact,
+      controllerDirection,
+      showMessage,
+      messageContent,
+    } = storeToRefs(gameState);
 
     function changeColour(colour) {
       selectedButton.value = colour;
@@ -169,6 +208,13 @@ export default {
     function startAdventure() {
       runEnabled.value = true;
       showGame.value = true;
+      showFirstMessage.value = false;
+    }
+
+    // NPC interaction
+
+    function InteractNPC() {
+      showMessage.value = true;
     }
 
     return {
@@ -178,6 +224,12 @@ export default {
       runEnabled,
       selectedButton,
       startAdventure,
+      interact,
+      controllerDirection,
+      showFirstMessage,
+      showMessage,
+      messageContent,
+      InteractNPC,
     };
   },
 };
@@ -240,5 +292,15 @@ export default {
 
 .game-window {
   height: 100vh;
+}
+
+.unselectable {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
 }
 </style>

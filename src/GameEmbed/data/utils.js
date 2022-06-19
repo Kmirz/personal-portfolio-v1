@@ -19,7 +19,9 @@ export function checkForCharacterCollision({ characters, player, characterOffset
         },
       })
     ) {
-      console.log("go");
+      return true;
     }
   }
+
+  return false;
 }

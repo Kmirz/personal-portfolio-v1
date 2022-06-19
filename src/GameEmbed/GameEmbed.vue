@@ -19,7 +19,8 @@ export default {
     const canvasBlock = ref(null);
 
     const gameState = useContext();
-    const { runEnabled } = storeToRefs(gameState);
+    const { runEnabled, interact, controllerDirection } =
+      storeToRefs(gameState);
 
     const audio = {
       Map: new Howl({
@@ -210,7 +211,7 @@ export default {
         if (runEnabled.value) {
           movables = [background, ...boundaries, foreground, ...characters];
         } else {
-          movables = [...characters];
+          movables = [];
         }
 
         const animationId = window.requestAnimationFrame(animate);
@@ -225,7 +226,9 @@ export default {
           player.animate = true;
           player.image = player.sprites.up;
 
-          checkForCharacterCollision({
+          controllerDirection.value = "/Controller/up.png";
+
+          interact.value = checkForCharacterCollision({
             characters,
             player,
             characterOffset: { x: 0, y: 3 },
@@ -258,7 +261,9 @@ export default {
           player.animate = true;
           player.image = player.sprites.left;
 
-          checkForCharacterCollision({
+          controllerDirection.value = "/Controller/left.png";
+
+          interact.value = checkForCharacterCollision({
             characters,
             player,
             characterOffset: { x: 3, y: 0 },
@@ -294,7 +299,9 @@ export default {
           player.animate = true;
           player.image = player.sprites.down;
 
-          checkForCharacterCollision({
+          controllerDirection.value = "/Controller/down.png";
+
+          interact.value = checkForCharacterCollision({
             characters,
             player,
             characterOffset: { x: 0, y: -3 },
@@ -327,7 +334,9 @@ export default {
           player.animate = true;
           player.image = player.sprites.right;
 
-          checkForCharacterCollision({
+          controllerDirection.value = "/Controller/right.png";
+
+          interact.value = checkForCharacterCollision({
             characters,
             player,
             characterOffset: { x: -3, y: 0 },
@@ -402,18 +411,22 @@ export default {
           case "w":
             keys.w.pressed = false;
             lastKey = lastKey.filter((key) => key !== "w");
+            controllerDirection.value = "/Controller/idle.png";
             break;
           case "a":
             keys.a.pressed = false;
             lastKey = lastKey.filter((key) => key !== "a");
+            controllerDirection.value = "/Controller/idle.png";
             break;
           case "s":
             keys.s.pressed = false;
             lastKey = lastKey.filter((key) => key !== "s");
+            controllerDirection.value = "/Controller/idle.png";
             break;
           case "d":
             keys.d.pressed = false;
             lastKey = lastKey.filter((key) => key !== "d");
+            controllerDirection.value = "/Controller/idle.png";
             break;
         }
       });
@@ -459,6 +472,7 @@ export default {
 
       mc.on("panend", function (ev) {
         console.log(ev.type + " gesture detected.");
+        controllerDirection.value = "/Controller/idle.png";
 
         lastKey = [];
       });
@@ -472,7 +486,7 @@ export default {
     //   }
     // });
 
-    return { canvasBlock };
+    return { canvasBlock, interact, controllerDirection };
   },
 };
 </script>
