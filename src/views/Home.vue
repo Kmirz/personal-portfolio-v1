@@ -101,7 +101,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, onUnmounted, onMounted, watch } from "vue";
 import GameEmbed from "../GameEmbed/GameEmbed.vue";
 
 import { useContext } from "../stores/gameState";
@@ -215,7 +215,49 @@ export default {
 
     function InteractNPC() {
       showMessage.value = true;
+      messageContent.value = "";
+      showNPCText();
     }
+
+    async function showNPCText() {
+      // console.log("running function");
+
+      let conversationArray = ["Hello there!", "How are you doing?"];
+
+      let stringArray = Array.from(conversationArray[0]);
+
+      // console.log(stringArray);
+
+      for (let item of stringArray) {
+        await new Promise((resolve) => {
+          setTimeout(() => {
+            messageContent.value = messageContent.value + item;
+            // console.log(roleName.value);
+            resolve();
+          }, 30);
+        });
+      }
+    }
+
+    // turns off message visibility when moving away from NPC
+
+    watch(interact, (currentValue, oldValue) => {
+      if (!interact.value) {
+        showMessage.value = false;
+      }
+    });
+
+    //resetting to defaults
+
+    onUnmounted(() => {
+      showMessage.value = false;
+      showFirstMessage.value = true;
+      runEnabled.value = false;
+    });
+
+    onMounted(() => {
+      window.scrollTo(0, 0);
+    });
 
     return {
       roleName,
@@ -295,7 +337,6 @@ export default {
 }
 
 .unselectable {
-  user-drag: none;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-drag: none;
