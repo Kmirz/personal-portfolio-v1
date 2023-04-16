@@ -224,18 +224,12 @@ export default {
 
       let conversationArray = ["Hello there!", "How are you doing?"];
 
-      let stringArray = Array.from(conversationArray[0]);
-
       // console.log(stringArray);
+      const stringArray = await fetch("/mock").then(response => response.json()).then(response => response.message)
 
       for (let item of stringArray) {
-        await new Promise((resolve) => {
-          setTimeout(() => {
-            messageContent.value = messageContent.value + item;
-            // console.log(roleName.value);
-            resolve();
-          }, 30);
-        });
+        await new Promise((r) => setTimeout(r, 30));
+        messageContent.value = messageContent.value + item;
       }
     }
 
