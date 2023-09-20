@@ -31,7 +31,7 @@
             Introduction
           </p>
           <p class="alt-text">
-            Welcome! I’m a development lead, process engineer, and certified
+            Welcome! I’m a product owner, process engineer, and certified
             scrum master (CSM) - currently applying my development, process
             improvement, and digitization skillset to improve client and
             employee experience.

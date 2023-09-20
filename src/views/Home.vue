@@ -94,7 +94,7 @@
         "
         v-motion-pop
       >
-        Interact
+        Talk
       </button>
     </div>
   </main>
@@ -113,6 +113,8 @@ export default {
     // Setup role rotation for intro page
 
     const roleList = [
+      "a story teller.",
+      "a product owner.",
       "a developer.",
       "an engineer.",
       "a writer.",
@@ -222,14 +224,26 @@ export default {
     async function showNPCText() {
       // console.log("running function");
 
-      let conversationArray = ["Hello there!", "How are you doing?"];
+      // interact.value = false;
+
+      let conversationArray = [
+        ["Hello there!", "How are you doing?"],
+        ["Test", "This is another chat"]
+      ];
+
+      const chosenConversation = conversationArray[Math.floor(Math.random() * conversationArray.length)]
 
       // console.log(stringArray);
-      const stringArray = await fetch("/mock").then(response => response.json()).then(response => response.message)
+      // const stringArray = await fetch("http://localhost:3001/mock").then(response => response.json()).then(response => response.message)
 
-      for (let item of stringArray) {
-        await new Promise((r) => setTimeout(r, 30));
-        messageContent.value = messageContent.value + item;
+      for (let chosenConversationLine of chosenConversation) {
+        await new Promise((r) => setTimeout(r, 300));
+        messageContent.value = "";
+
+          for (let character of chosenConversationLine) {
+            await new Promise((r) => setTimeout(r, 60));
+            messageContent.value = messageContent.value + character;
+        }
       }
     }
 
