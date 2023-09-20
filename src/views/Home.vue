@@ -174,6 +174,7 @@ export default {
       controllerDirection,
       showMessage,
       messageContent,
+      playerDownDynamic, playerLeftDynamic, playerRightDynamic, playerUpDynamic
     } = storeToRefs(gameState);
 
     function changeColour(colour) {
@@ -186,6 +187,11 @@ export default {
           document.documentElement.style.setProperty("--dark", "#f4c127");
           document.documentElement.style.setProperty("--dark-alt", "#d87d0f");
 
+          playerDownDynamic.value = "/img/playerCharacter/Yellow/playerDown.png";
+          playerLeftDynamic.value = "/img/playerCharacter/Yellow/playerLeft.png";
+          playerRightDynamic.value = "/img/playerCharacter/Yellow/playerRight.png";
+          playerUpDynamic.value = "/img/playerCharacter/Yellow/playerUp.png";
+
           break;
 
         case "green":
@@ -193,12 +199,22 @@ export default {
           document.documentElement.style.setProperty("--dark", "#2e6c2f");
           document.documentElement.style.setProperty("--dark-alt", "#334155");
 
+          playerDownDynamic.value = "/img/playerCharacter/Green/playerDown.png";
+          playerLeftDynamic.value = "/img/playerCharacter/Green/playerLeft.png";
+          playerRightDynamic.value = "/img/playerCharacter/Green/playerRight.png";
+          playerUpDynamic.value = "/img/playerCharacter/Green/playerUp.png";
+
           break;
 
         case "blue":
           document.documentElement.style.setProperty("--primary", "#33ccff");
           document.documentElement.style.setProperty("--dark", "#4d9ba6");
           document.documentElement.style.setProperty("--dark-alt", "#2f6bbe");
+
+          playerDownDynamic.value = "/img/playerCharacter/Blue/playerDown.png";
+          playerLeftDynamic.value = "/img/playerCharacter/Blue/playerLeft.png";
+          playerRightDynamic.value = "/img/playerCharacter/Blue/playerRight.png";
+          playerUpDynamic.value = "/img/playerCharacter/Blue/playerUp.png";
 
           break;
 
@@ -280,6 +296,7 @@ export default {
       showMessage,
       messageContent,
       InteractNPC,
+      playerDownDynamic, playerLeftDynamic, playerRightDynamic, playerUpDynamic
     };
   },
 };

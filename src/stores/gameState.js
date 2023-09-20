@@ -9,5 +9,10 @@ export const useContext = defineStore({
     controllerDirection: "/Controller/idle.png",
     showMessage: false,
     messageContent: "test",
+    playerDownDynamic: "/img/playerCharacter/Green/playerDown.png",
+    playerLeftDynamic: "/img/playerCharacter/Green/playerLeft.png",
+    playerRightDynamic: "/img/playerCharacter/Green/playerRight.png",
+    playerUpDynamic: "/img/playerCharacter/Green/playerUp.png"
+
   }),
 });

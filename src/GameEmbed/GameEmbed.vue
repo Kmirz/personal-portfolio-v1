@@ -19,7 +19,7 @@ export default {
     const canvasBlock = ref(null);
 
     const gameState = useContext();
-    const { runEnabled, interact, controllerDirection } =
+    const { runEnabled, interact, controllerDirection, playerDownDynamic, playerLeftDynamic, playerRightDynamic, playerUpDynamic } =
       storeToRefs(gameState);
 
     const audio = {
@@ -152,8 +152,9 @@ export default {
       foregroundImage.src = "/img/foregroundObjects.png";
 
       const playerDownImage = new Image();
-      playerDownImage.src = "/img/playerDown.png";
-
+      // playerDownImage.src = "/img/playerDown.png";
+      playerDownImage.src = playerDownDynamic.value;
+      
       const playerUpImage = new Image();
       playerUpImage.src = "/img/playerUp.png";
 
@@ -208,6 +209,13 @@ export default {
       let movables = [background, ...boundaries, foreground, ...characters];
 
       function animate() {
+
+        playerDownImage.src = playerDownDynamic.value;
+        playerLeftImage.src = playerLeftDynamic.value;
+        playerRightImage.src = playerRightDynamic.value;
+        playerUpImage.src = playerUpDynamic.value;
+
+
         if (runEnabled.value) {
           movables = [background, ...boundaries, foreground, ...characters];
         } else {
@@ -486,7 +494,7 @@ export default {
     //   }
     // });
 
-    return { canvasBlock, interact, controllerDirection };
+    return { canvasBlock, interact, controllerDirection, playerDownDynamic, playerLeftDynamic, playerRightDynamic, playerUpDynamic };
   },
 };
 </script>
