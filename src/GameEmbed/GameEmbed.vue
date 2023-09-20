@@ -101,15 +101,15 @@ export default {
             characters.push(
               new Sprite({
                 position: {
-                  x: j * Boundary.width + offset.x,
+                  x: j * Boundary.width + offset.x - 50,
                   y: i * Boundary.height + offset.y,
                 },
                 image: villagerImg,
                 frames: {
-                  max: 4,
-                  hold: 60,
+                  max: 2,
+                  hold: 90,
                 },
-                scale: 3,
+                scale: 1.0,
                 animate: true,
               })
             );
@@ -124,10 +124,11 @@ export default {
                 },
                 image: oldManImg,
                 frames: {
-                  max: 4,
-                  hold: 60,
+                  max: 7,
+                  hold: 5,
                 },
-                scale: 3,
+                scale: 1,
+                animate: true,
               })
             );
           }
