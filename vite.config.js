@@ -9,6 +9,16 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+    },
+  },
+  server: {
+    proxy: {
+      '/mock': {
+           target: 'https://localhost:3001/mock',
+           changeOrigin: true,
+           secure: false,         
+           ws: false,
+       }
+  }
   }
 })

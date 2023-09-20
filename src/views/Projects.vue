@@ -26,12 +26,7 @@
               HTML, CSS, VUE.JS, EXPRESS, Node.js
             </p>
             <div class="row mx-auto d-flex justify-content-between">
-              <a
-                href="https://dnd-random-gen-vue-express.herokuapp.com/"
-                class="btn btn-primary my-2"
-                target="_blank"
-                >Live Demo</a
-              >
+
               <a
                 href="https://github.com/Kmirz/DnD-Character-Generator-VueJS"
                 class="btn btn-success my-2"
@@ -65,12 +60,7 @@
               HTML, CSS, VUE.JS
             </p>
             <div class="row mx-auto d-flex justify-content-between">
-              <a
-                href="https://responsive-sidebar.herokuapp.com/"
-                class="btn btn-primary my-2"
-                target="_blank"
-                >Live Demo</a
-              >
+
               <a
                 href="https://github.com/Kmirz/Responsive-Sidebar-VueJS"
                 class="btn btn-success my-2"
@@ -100,12 +90,7 @@
               HTML, CSS, VUE.JS
             </p>
             <div class="row mx-auto d-flex justify-content-between">
-              <a
-                href="https://task-tracker-vuejs.herokuapp.com/"
-                class="btn btn-primary my-2"
-                target="_blank"
-                >Live Demo</a
-              >
+
               <a
                 href="https://github.com/Kmirz/Task-Tracker-VueJS"
                 class="btn btn-success my-2"
@@ -138,12 +123,7 @@
               HTML, CSS, VUE.JS, EXPRESS, Node.js, Mongo.DB
             </p>
             <div class="row mx-auto d-flex justify-content-between">
-              <a
-                href="https://subscriber-generator.herokuapp.com/"
-                class="btn btn-primary my-2"
-                target="_blank"
-                >Live Demo</a
-              >
+
               <a
                 href="https://github.com/Kmirz/Subscriber-REST-API-FullStack"
                 class="btn btn-success my-2"
