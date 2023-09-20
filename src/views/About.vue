@@ -53,7 +53,7 @@
           <a
             class="nes-btn m-2 is-primary"
             style="color: white"
-            href="/Kash Mirza Resume 2022 V1.1.pdf"
+            href="/Kash Mirza Resume.pdf"
             v-motion-slide-left
           >
             Resume
