@@ -13,6 +13,8 @@ export const useContext = defineStore({
     playerLeftDynamic: "/img/playerCharacter/Green/playerLeft.png",
     playerRightDynamic: "/img/playerCharacter/Green/playerRight.png",
     playerUpDynamic: "/img/playerCharacter/Green/playerUp.png",
-    NPCID: ""
+    NPCID: "",
+    showPhoto: false,
+    photoSelected: false
   }),
 });

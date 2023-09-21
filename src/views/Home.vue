@@ -14,14 +14,26 @@
       </p>
     </div>
 
-    <div
-      v-show="showMessage"
-      class="nes-container with-title is-rounded is-dark textbox bottom-text-wrapper"
-      v-motion-pop
-    >
-      <p class="title">{{NPCID}}</p>
-      <p>{{ messageContent }}</p>
-    </div>
+      <div
+        v-show="showMessage"
+        class="nes-container with-title is-rounded is-dark textbox bottom-text-wrapper"
+        v-motion-pop
+      >
+        <p class="title">{{NPCID}}</p>
+        <p>{{ messageContent }}</p>
+      </div>
+      
+      <div
+        v-if="showPhoto"
+        class="nes-container with-title is-rounded is-dark textbox image-wrapper"
+        v-motion-pop
+      >
+        <img
+          class="photo"
+          :src= "photoSelected"
+          alt=""
+        />
+      </div>
 
     <div class="intro-block">
       <GameEmbed class="game-window" v-motion-pop />
@@ -176,7 +188,7 @@ export default {
       showMessage,
       messageContent,
       playerDownDynamic, playerLeftDynamic, playerRightDynamic, playerUpDynamic,
-      NPCID
+      NPCID, showPhoto, photoSelected
     } = storeToRefs(gameState);
 
     function changeColour(colour) {
@@ -251,8 +263,15 @@ export default {
 
       let conversationList = {
       'James'  : ["Hello there!", "How are you doing?"],
-      'Juno the cutest Dog' : ["Woof Woof!", "Woof!", "Woof Woof!"]
+      'Juno the cutest Dog' : ["Woof Woof!", "Woof!", "Woof Woof!"],
+      'Leticia' : ["Hey there!", "I'm so glad you're here", "Kash is cool!", 2],
       }
+
+      let imageList = [
+        "",
+        "",
+        "/82502279_1029047344128278_5322203239888715776_n.jpg"
+      ]
 
       const chosenConversation = conversationList[NPCID.value]
 
@@ -261,11 +280,19 @@ export default {
 
       for (let chosenConversationLine of chosenConversation) {
         await new Promise((r) => setTimeout(r, 300));
-        messageContent.value = "";
 
-          for (let character of chosenConversationLine) {
-            await new Promise((r) => setTimeout(r, 60));
-            messageContent.value = messageContent.value + character;
+        if(typeof chosenConversationLine === "string"){
+          messageContent.value = "";
+  
+            for (let character of chosenConversationLine) {
+              await new Promise((r) => setTimeout(r, 60));
+              messageContent.value = messageContent.value + character;
+          }
+        } else {
+            photoSelected.value = imageList[chosenConversationLine]
+            showPhoto.value = true;
+            // photoID = chosenConversationLine;
+            console.log("updated photoSelected to", photoSelected)
         }
       }
     }
@@ -275,6 +302,7 @@ export default {
     watch(interact, (currentValue, oldValue) => {
       if (!interact.value) {
         showMessage.value = false;
+        showPhoto.value = false;
       }
     });
 
@@ -303,7 +331,7 @@ export default {
       showMessage,
       messageContent,
       InteractNPC,
-      playerDownDynamic, playerLeftDynamic, playerRightDynamic, playerUpDynamic, NPCID
+      playerDownDynamic, playerLeftDynamic, playerRightDynamic, playerUpDynamic, NPCID, photoSelected, showPhoto
     };
   },
 };
@@ -362,6 +390,19 @@ export default {
   position: absolute;
   top: 10px;
   z-index: 1;
+}
+
+.image-wrapper {
+  position: absolute;
+  top: 180px;
+  z-index: 1;
+  height: 40vh;
+  text-align: center;
+}
+
+.photo {
+  z-index: 1;
+  height: 100%;
 }
 
 .game-window {

@@ -102,6 +102,9 @@ export default {
       const oldManImg = new Image();
       oldManImg.src = "/img/oldMan/Idle.png";
 
+      const leticiaImg = new Image();
+      leticiaImg.src = "/img/Leticia/Idle.png";
+
       charactersMap.forEach((row, i) => {
         row.forEach((symbol, j) => {
           // 1026 === James
@@ -149,6 +152,36 @@ export default {
                 scale: 1,
                 animate: true,
                 NPCID: "Juno the cutest Dog"
+              })
+            );
+          
+            //Creates character boundary
+            boundaries.push(
+              new Boundary({
+                position: {
+                  x: j * Boundary.width + offset.x + 15,
+                  y: i * Boundary.height + offset.y + 60,
+                },
+              })
+            );
+          
+          }
+
+          else if (symbol === "Leticia") {
+            characters.push(
+              new Sprite({
+                position: {
+                  x: j * Boundary.width + offset.x,
+                  y: i * Boundary.height + offset.y,
+                },
+                image: leticiaImg,
+                frames: {
+                  max: 8,
+                  hold: 5,
+                },
+                scale: 1,
+                animate: true,
+                NPCID: "Leticia"
               })
             );
           
