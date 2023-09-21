@@ -15,6 +15,7 @@ export const useContext = defineStore({
     playerUpDynamic: "/img/playerCharacter/Green/playerUp.png",
     NPCID: "",
     showPhoto: false,
-    photoSelected: false
+    photoSelected: false, 
+    disableTalk: false
   }),
 });

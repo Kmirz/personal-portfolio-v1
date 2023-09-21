@@ -16,7 +16,7 @@
 
       <div
         v-show="showMessage"
-        class="nes-container with-title is-rounded is-dark textbox bottom-text-wrapper"
+        class="nes-container with-title is-rounded is-dark textbox bottom-text-wrapper unselectable"
         v-motion-pop
       >
         <p class="title">{{NPCID}}</p>
@@ -25,7 +25,7 @@
       
       <div
         v-if="showPhoto"
-        class="nes-container with-title is-rounded is-dark textbox image-wrapper"
+        class="nes-container with-title is-rounded is-dark textbox image-wrapper unselectable"
         v-motion-pop
       >
         <img
@@ -188,7 +188,7 @@ export default {
       showMessage,
       messageContent,
       playerDownDynamic, playerLeftDynamic, playerRightDynamic, playerUpDynamic,
-      NPCID, showPhoto, photoSelected
+      NPCID, showPhoto, photoSelected, disableTalk
     } = storeToRefs(gameState);
 
     function changeColour(colour) {
@@ -248,6 +248,7 @@ export default {
     function InteractNPC() {
       showMessage.value = true;
       messageContent.value = "";
+      disableTalk.value = false;
       showNPCText();
     }
 
@@ -256,20 +257,15 @@ export default {
 
       // interact.value = false;
 
-      let conversationArray = [
-        ["Hello there!", "How are you doing?"],
-        ["Test", "This is another chat"]
-      ];
-
       let conversationList = {
-      'James'  : ["Hello there!", "How are you doing?"],
-      'Juno the cutest Dog' : ["Woof Woof!", "Woof!", "Woof Woof!"],
-      'Leticia' : ["Hey there!", "I'm so glad you're here", "Kash is cool!", 2],
+      'James'  : ["Kash cares a lot about diversity and inclusion ▶", "He led the logistics team at VentureOut ▶",0, "One of Canada's largest LGBT+ tech conferences"],
+      'Juno the cutest Dog' : ["Woof Woof! ▶", 1, "Woof! ▶", "Woof Woof!"],
+      'Leticia' : ["Isn't this really cool? ▶", "Talk to everyone to learn more about Kash! ▶", 2, "Like how he worked in Robotic Process Automation!"],
       }
 
       let imageList = [
-        "",
-        "",
+        "public/img/Photos/venture Out.jpeg",
+        "public/img/Photos/juno.jpg",
         "/82502279_1029047344128278_5322203239888715776_n.jpg"
       ]
 
@@ -279,21 +275,25 @@ export default {
       // const stringArray = await fetch("http://localhost:3001/mock").then(response => response.json()).then(response => response.message)
 
       for (let chosenConversationLine of chosenConversation) {
-        await new Promise((r) => setTimeout(r, 300));
-
+        
         if(typeof chosenConversationLine === "string"){
           messageContent.value = "";
-  
-            for (let character of chosenConversationLine) {
-              await new Promise((r) => setTimeout(r, 60));
-              messageContent.value = messageContent.value + character;
+          
+          for (let character of chosenConversationLine) {
+            if(interact.value === true){
+            await new Promise((r) => setTimeout(r, 20));
+            messageContent.value = messageContent.value + character;
+          } else return;
           }
+           await new Promise((r) => setTimeout(r, 2000));
+            
         } else {
-            photoSelected.value = imageList[chosenConversationLine]
-            showPhoto.value = true;
-            // photoID = chosenConversationLine;
-            console.log("updated photoSelected to", photoSelected)
+          photoSelected.value = imageList[chosenConversationLine]
+          showPhoto.value = true;
+          // photoID = chosenConversationLine;
+          console.log("updated photoSelected to", photoSelected)
         }
+
       }
     }
 
@@ -331,7 +331,7 @@ export default {
       showMessage,
       messageContent,
       InteractNPC,
-      playerDownDynamic, playerLeftDynamic, playerRightDynamic, playerUpDynamic, NPCID, photoSelected, showPhoto
+      playerDownDynamic, playerLeftDynamic, playerRightDynamic, playerUpDynamic, NPCID, photoSelected, showPhoto, disableTalk
     };
   },
 };
@@ -395,7 +395,7 @@ export default {
 .image-wrapper {
   position: absolute;
   top: 180px;
-  z-index: 1;
+  z-index: 2;
   height: 40vh;
   text-align: center;
 }
