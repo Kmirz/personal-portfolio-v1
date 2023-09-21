@@ -1,5 +1,15 @@
 export function rectangularCollision({ rectangle1, rectangle2 }) {
-  return rectangle1.position.x + rectangle1.width >= rectangle2.position.x && rectangle1.position.x <= rectangle2.position.x + rectangle2.width && rectangle1.position.y <= rectangle2.position.y + rectangle2.height && rectangle1.position.y + rectangle1.height >= rectangle2.position.y;
+  return rectangle1.position.x + rectangle1.width >= rectangle2.position.x && 
+  rectangle1.position.x <= rectangle2.position.x + rectangle2.width && 
+  rectangle1.position.y <= rectangle2.position.y + rectangle2.height - 50 && 
+  rectangle1.position.y + rectangle1.height >= rectangle2.position.y;
+}
+
+export function NPCCollision({ rectangle1, rectangle2 }) {
+  return rectangle1.position.x + rectangle1.width + 50 >= rectangle2.position.x && 
+  rectangle1.position.x <= rectangle2.position.x + rectangle2.width + 50 && 
+  rectangle1.position.y <= rectangle2.position.y + rectangle2.height + 50 && 
+  rectangle1.position.y + rectangle1.height + 50 >= rectangle2.position.y;
 }
 
 export function checkForCharacterCollision({ characters, player, characterOffset = { x: 0, y: 0 } }) {
@@ -7,8 +17,10 @@ export function checkForCharacterCollision({ characters, player, characterOffset
   for (let i = 0; i < characters.length; i++) {
     const character = characters[i];
 
+    // player.height = player.height + 10;
+
     if (
-      rectangularCollision({
+      NPCCollision({
         rectangle1: player,
         rectangle2: {
           ...character,

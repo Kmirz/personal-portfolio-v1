@@ -50,22 +50,30 @@ export default {
 
       const c = canvas.getContext("2d");
 
+      // canvas.width = (1024 + 500)*4;
       canvas.width = 1024 + 500;
+      // canvas.height = 576*4;
       canvas.height = 576;
       console.log(canvas);
 
-      const collisionsMap = [];
-      for (let i = 0; i < collisions.length; i += 70) {
-        collisionsMap.push(collisions.slice(i, 70 + i));
-      }
+      // const collisionsMap = [];
+      // for (let i = 0; i < collisions.length; i += 70) {
+      //   collisionsMap.push(collisions.slice(i, 70 + i));
+      // }
+
+      const collisionsMap = collisions
+
+      console.log({collisionsMap})
 
       console.log(charactersMapData);
 
-      const charactersMap = [];
-      for (let i = 0; i < charactersMapData.length; i += 70) {
-        charactersMap.push(charactersMapData.slice(i, 70 + i));
-      }
-      console.log(charactersMap);
+
+      const charactersMap = charactersMapData
+      // const charactersMap = [];
+      // for (let i = 0; i < charactersMapData.length; i += 70) {
+      //   charactersMap.push(charactersMapData.slice(i, 70 + i));
+      // }
+      // console.log({charactersMap})
 
       const boundaries = [];
       const offset = {
@@ -101,7 +109,7 @@ export default {
             characters.push(
               new Sprite({
                 position: {
-                  x: j * Boundary.width + offset.x - 50,
+                  x: j * Boundary.width + offset.x,
                   y: i * Boundary.height + offset.y,
                 },
                 image: villagerImg,
@@ -111,6 +119,16 @@ export default {
                 },
                 scale: 1.0,
                 animate: true,
+              })
+            );
+
+            //Creates character boundary
+            boundaries.push(
+              new Boundary({
+                position: {
+                  x: j * Boundary.width + offset.x + 60,
+                  y: i * Boundary.height + offset.y + 60,
+                },
               })
             );
           }
@@ -131,18 +149,20 @@ export default {
                 animate: true,
               })
             );
-          }
-
-          if (symbol !== 0) {
+          
+            //Creates character boundary
             boundaries.push(
               new Boundary({
                 position: {
-                  x: j * Boundary.width + offset.x,
-                  y: i * Boundary.height + offset.y,
+                  x: j * Boundary.width + offset.x + 60,
+                  y: i * Boundary.height + offset.y + 60,
                 },
               })
             );
+          
           }
+
+
         });
       });
 

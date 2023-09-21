@@ -28,7 +28,7 @@
       </router-link>
     </div>
     <div class="menu">
-      <a class="button" href="/Kash Mirza Resume 2022 V1.1.pdf" target="_blank">
+      <a class="button" href="/Kash Mirza Resume" target="_blank">
         <span class="material-icons material-icons-round"> description </span>
         <span class="text">Resumé</span>
       </a>
