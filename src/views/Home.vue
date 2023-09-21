@@ -264,8 +264,8 @@ export default {
       }
 
       let imageList = [
-        "public/img/Photos/venture Out.jpeg",
-        "public/img/Photos/juno.jpg",
+        "/img/Photos/venture Out.jpeg",
+        "/img/Photos/juno.jpg",
         "/82502279_1029047344128278_5322203239888715776_n.jpg"
       ]
 
