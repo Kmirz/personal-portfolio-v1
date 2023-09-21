@@ -19,7 +19,7 @@ export default {
     const canvasBlock = ref(null);
 
     const gameState = useContext();
-    const { runEnabled, interact, controllerDirection, playerDownDynamic, playerLeftDynamic, playerRightDynamic, playerUpDynamic } =
+    const { runEnabled, interact, controllerDirection, playerDownDynamic, playerLeftDynamic, playerRightDynamic, playerUpDynamic, NPCID } =
       storeToRefs(gameState);
 
     const audio = {
@@ -104,8 +104,8 @@ export default {
 
       charactersMap.forEach((row, i) => {
         row.forEach((symbol, j) => {
-          // 1026 === villager
-          if (symbol === 1026) {
+          // 1026 === James
+          if (symbol === "James") {
             characters.push(
               new Sprite({
                 position: {
@@ -119,6 +119,7 @@ export default {
                 },
                 scale: 1.0,
                 animate: true,
+                NPCID: "James"
               })
             );
 
@@ -132,8 +133,8 @@ export default {
               })
             );
           }
-          // 1031 === oldMan
-          else if (symbol === 1031) {
+          // 1031 === Juno
+          else if (symbol === "Juno the cutest Dog") {
             characters.push(
               new Sprite({
                 position: {
@@ -147,6 +148,7 @@ export default {
                 },
                 scale: 1,
                 animate: true,
+                NPCID: "Juno the cutest Dog"
               })
             );
           
@@ -154,7 +156,7 @@ export default {
             boundaries.push(
               new Boundary({
                 position: {
-                  x: j * Boundary.width + offset.x + 60,
+                  x: j * Boundary.width + offset.x + 15,
                   y: i * Boundary.height + offset.y + 60,
                 },
               })
@@ -257,11 +259,13 @@ export default {
 
           controllerDirection.value = "/Controller/up.png";
 
-          interact.value = checkForCharacterCollision({
+          NPCID.value = checkForCharacterCollision({
             characters,
             player,
             characterOffset: { x: 0, y: 3 },
           });
+
+          interact.value = NPCID.value != "NA";
 
           for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i];
@@ -292,11 +296,13 @@ export default {
 
           controllerDirection.value = "/Controller/left.png";
 
-          interact.value = checkForCharacterCollision({
+          NPCID.value = checkForCharacterCollision({
             characters,
             player,
-            characterOffset: { x: 3, y: 0 },
+            characterOffset: { x: 0, y: 3 },
           });
+
+          interact.value = NPCID.value != "NA";
 
           for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i];
@@ -330,11 +336,13 @@ export default {
 
           controllerDirection.value = "/Controller/down.png";
 
-          interact.value = checkForCharacterCollision({
+          NPCID.value = checkForCharacterCollision({
             characters,
             player,
-            characterOffset: { x: 0, y: -3 },
+            characterOffset: { x: 0, y: 3 },
           });
+
+          interact.value = NPCID.value != "NA";
 
           for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i];
@@ -365,11 +373,13 @@ export default {
 
           controllerDirection.value = "/Controller/right.png";
 
-          interact.value = checkForCharacterCollision({
+          NPCID.value = checkForCharacterCollision({
             characters,
             player,
-            characterOffset: { x: -3, y: 0 },
+            characterOffset: { x: 0, y: 3 },
           });
+
+          interact.value = NPCID.value != "NA";
 
           for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i];

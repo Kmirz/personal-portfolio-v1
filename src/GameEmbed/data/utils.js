@@ -6,10 +6,10 @@ export function rectangularCollision({ rectangle1, rectangle2 }) {
 }
 
 export function NPCCollision({ rectangle1, rectangle2 }) {
-  return rectangle1.position.x + rectangle1.width + 50 >= rectangle2.position.x && 
-  rectangle1.position.x <= rectangle2.position.x + rectangle2.width + 50 && 
-  rectangle1.position.y <= rectangle2.position.y + rectangle2.height + 50 && 
-  rectangle1.position.y + rectangle1.height + 50 >= rectangle2.position.y;
+  return rectangle1.position.x + rectangle1.width + 25 >= rectangle2.position.x && 
+  rectangle1.position.x <= rectangle2.position.x + rectangle2.width + 25 && 
+  rectangle1.position.y <= rectangle2.position.y + rectangle2.height + 25 && 
+  rectangle1.position.y + rectangle1.height + 25 >= rectangle2.position.y;
 }
 
 export function checkForCharacterCollision({ characters, player, characterOffset = { x: 0, y: 0 } }) {
@@ -31,9 +31,10 @@ export function checkForCharacterCollision({ characters, player, characterOffset
         },
       })
     ) {
-      return true;
+      console.log("Interacting with: ", character.NPCID)
+      return character.NPCID;
     }
   }
 
-  return false;
+  return "NA"; //Will render interact value to be false
 }

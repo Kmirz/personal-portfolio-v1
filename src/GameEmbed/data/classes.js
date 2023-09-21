@@ -1,5 +1,6 @@
 export class Sprite {
-  constructor({ position, velocity, image, frames = { max: 1, hold: 10 }, sprites, animate = false, rotation = 0, scale = 1 }) {
+  constructor({ position, velocity, image, frames = { max: 1, hold: 10 }, sprites, animate = false, rotation = 0, scale = 1, NPCID}) {
+    this.NPCID = NPCID;
     this.position = position;
     this.image = new Image();
     this.frames = { ...frames, val: 0, elapsed: 0 };

@@ -16,9 +16,10 @@
 
     <div
       v-show="showMessage"
-      class="nes-container is-rounded is-dark textbox bottom-text-wrapper"
+      class="nes-container with-title is-rounded is-dark textbox bottom-text-wrapper"
       v-motion-pop
     >
+      <p class="title">{{NPCID}}</p>
       <p>{{ messageContent }}</p>
     </div>
 
@@ -174,7 +175,8 @@ export default {
       controllerDirection,
       showMessage,
       messageContent,
-      playerDownDynamic, playerLeftDynamic, playerRightDynamic, playerUpDynamic
+      playerDownDynamic, playerLeftDynamic, playerRightDynamic, playerUpDynamic,
+      NPCID
     } = storeToRefs(gameState);
 
     function changeColour(colour) {
@@ -247,7 +249,12 @@ export default {
         ["Test", "This is another chat"]
       ];
 
-      const chosenConversation = conversationArray[Math.floor(Math.random() * conversationArray.length)]
+      let conversationList = {
+      'James'  : ["Hello there!", "How are you doing?"],
+      'Juno the cutest Dog' : ["Woof Woof!", "Woof!", "Woof Woof!"]
+      }
+
+      const chosenConversation = conversationList[NPCID.value]
 
       // console.log(stringArray);
       // const stringArray = await fetch("http://localhost:3001/mock").then(response => response.json()).then(response => response.message)
@@ -296,7 +303,7 @@ export default {
       showMessage,
       messageContent,
       InteractNPC,
-      playerDownDynamic, playerLeftDynamic, playerRightDynamic, playerUpDynamic
+      playerDownDynamic, playerLeftDynamic, playerRightDynamic, playerUpDynamic, NPCID
     };
   },
 };

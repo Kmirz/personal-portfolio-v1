@@ -12,7 +12,7 @@ export const useContext = defineStore({
     playerDownDynamic: "/img/playerCharacter/Green/playerDown.png",
     playerLeftDynamic: "/img/playerCharacter/Green/playerLeft.png",
     playerRightDynamic: "/img/playerCharacter/Green/playerRight.png",
-    playerUpDynamic: "/img/playerCharacter/Green/playerUp.png"
-
+    playerUpDynamic: "/img/playerCharacter/Green/playerUp.png",
+    NPCID: ""
   }),
 });
