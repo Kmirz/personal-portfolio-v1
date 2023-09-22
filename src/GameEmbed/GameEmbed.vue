@@ -105,9 +105,15 @@ export default {
       const leticiaImg = new Image();
       leticiaImg.src = "/img/Leticia/Idle.png";
 
+      const jacobImg = new Image();
+      jacobImg.src = "/img/Jacob/Idle.png";
+
+      const juliaImg = new Image();
+      juliaImg.src = "/img/Julia/Idle.png";
+
       charactersMap.forEach((row, i) => {
         row.forEach((symbol, j) => {
-          // 1026 === James
+          // James
           if (symbol === "James") {
             characters.push(
               new Sprite({
@@ -136,7 +142,7 @@ export default {
               })
             );
           }
-          // 1031 === Juno
+          // Juno
           else if (symbol === "Juno the cutest Dog") {
             characters.push(
               new Sprite({
@@ -166,7 +172,7 @@ export default {
             );
           
           }
-
+          // Leticia
           else if (symbol === "Leticia") {
             characters.push(
               new Sprite({
@@ -196,7 +202,67 @@ export default {
             );
           
           }
+          // Jacob
+          else if (symbol === "Jacob") {
+            characters.push(
+              new Sprite({
+                position: {
+                  x: j * Boundary.width + offset.x,
+                  y: i * Boundary.height + offset.y,
+                },
+                image: jacobImg,
+                frames: {
+                  max: 8,
+                  hold: 35,
+                },
+                scale: 1,
+                animate: true,
+                NPCID: "Jacob"
+              })
+            );
+          
+            //Creates character boundary
+            boundaries.push(
+              new Boundary({
+                position: {
+                  x: j * Boundary.width + offset.x + 30,
+                  y: i * Boundary.height + offset.y + 60,
+                },
+              })
+            );
+          
+          } 
 
+          // Julia
+          else if (symbol === "Julia") {
+            characters.push(
+              new Sprite({
+                position: {
+                  x: j * Boundary.width + offset.x,
+                  y: i * Boundary.height + offset.y,
+                },
+                image: juliaImg,
+                frames: {
+                  max: 5,
+                  hold: 60,
+                },
+                scale: 1,
+                animate: true,
+                NPCID: "Julia"
+              })
+            );
+          
+            //Creates character boundary
+            boundaries.push(
+              new Boundary({
+                position: {
+                  x: j * Boundary.width + offset.x + 20,
+                  y: i * Boundary.height + offset.y + 20,
+                },
+              })
+            );
+          
+          } 
 
         });
       });

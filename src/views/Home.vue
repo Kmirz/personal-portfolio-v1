@@ -261,12 +261,16 @@ export default {
       'James'  : ["Kash cares a lot about diversity and inclusion ▶", "He led the logistics team at VentureOut ▶",0, "One of Canada's largest LGBT+ tech conferences"],
       'Juno the cutest Dog' : ["Woof Woof! ▶", 1, "Woof! ▶", "Woof Woof!"],
       'Leticia' : ["Isn't this really cool? ▶", "Talk to everyone to learn more about Kash! ▶", 2, "Like how he worked in Robotic Process Automation!"],
-      }
+      'Jacob' : ["Kash studied process engineering! ▶", "Temperatures, pressures, crazy stuff! ▶", "It's all about solving problems!"],
+      'Julia' : ["Isn't it nice to work in the field? ▶", "Did you know, Kash used to work in the oil sands! ▶", 4, "This is Kash beside a 2-story transport truck!"],
+    }
 
       let imageList = [
         "/img/Photos/venture Out.jpeg",
         "/img/Photos/juno.jpg",
-        "/82502279_1029047344128278_5322203239888715776_n.jpg"
+        "/82502279_1029047344128278_5322203239888715776_n.jpg",
+        "",
+        "/img/Photos/Kearl Truck.jpeg"
       ]
 
       const chosenConversation = conversationList[NPCID.value]
